@@ -1,6 +1,7 @@
 ﻿using RecapProject.Business.Abstract;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities;
+using RecapProject.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,6 +40,26 @@ namespace RecapProject.Business.Concrete
         {
             return _carDal.GetAll();
 
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
+        }
+
+        public List<Car> GetCarsByBrandId(int brandId)
+        {
+            return _carDal.GetAll(c => c.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == colorId);
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
     }
 }

@@ -28,5 +28,15 @@ namespace RecapProject.Business.Concrete
         {
             return _brandDal.GetAll();
         }
+
+        public List<Brand> GetById(int brandId)
+        {
+            return _brandDal.GetAll(b => b.BrandId == brandId);
+        }
+
+        public void Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+        }
     }
 }

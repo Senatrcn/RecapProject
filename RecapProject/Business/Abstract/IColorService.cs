@@ -9,6 +9,8 @@ namespace RecapProject.Business.Abstract
     {
         void Add(Color color);
         void Delete(Color color);
+        void Update(Color color);
         List<Color> GetAll();
+        List<Color> GetById(int colorId);
     }
 }

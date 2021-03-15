@@ -28,5 +28,15 @@ namespace RecapProject.Business.Concrete
         {
             return _colorDal.GetAll();
         }
+
+        public List<Color> GetById(int colorId)
+        {
+            return _colorDal.GetAll(c => c.ColorId == colorId);
+        }
+
+        public void Update(Color color)
+        {
+            _colorDal.Update(color);
+        }
     }
 }

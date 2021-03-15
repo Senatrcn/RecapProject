@@ -1,8 +1,11 @@
 ﻿using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities;
+using RecapProject.Entities.Concrete;
+using RecapProject.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace RecapProject.DataAccess.Concrete.InMemory
@@ -23,10 +26,30 @@ namespace RecapProject.DataAccess.Concrete.InMemory
             Cars.Add(car);
         }
 
+        public void Add(Color entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(Car car)
         {
             Car carToDelete = Cars.SingleOrDefault(c => c.CarId == car.CarId);
             Cars.Remove(carToDelete);
+        }
+
+        public void Delete(Color entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Color Get(Expression<Func<Color, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Car> GetAll()
@@ -34,10 +57,25 @@ namespace RecapProject.DataAccess.Concrete.InMemory
             return Cars;
         }
 
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Car> GetById(int brandId)
         {
             return Cars.Where(c => c.BrandId == brandId).ToList();
 
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
@@ -50,5 +88,9 @@ namespace RecapProject.DataAccess.Concrete.InMemory
             carToUpdate.Description = car.Description;
         }
 
+        public void Update(Color entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
