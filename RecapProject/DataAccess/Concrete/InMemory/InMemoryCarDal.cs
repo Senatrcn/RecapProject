@@ -7,7 +7,7 @@ using System.Text;
 
 namespace RecapProject.DataAccess.Concrete.InMemory
 {
-    public class InMemoryCarDal : ICarDal
+    public class InMemoryCarDal : IColorDal
     {
         List<Car> Cars = new List<Car>
         {
