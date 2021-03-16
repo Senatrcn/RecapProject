@@ -1,4 +1,6 @@
 ﻿using RecapProject.Business.Abstract;
+using RecapProject.Business.Constants;
+using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities.Concrete;
 using System;
@@ -14,29 +16,32 @@ namespace RecapProject.Business.Concrete
         {
             _colorDal = colorDal;
         }
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
             _colorDal.Add(color);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>( _colorDal.GetAll(), Messages.ColorsListed);
         }
 
-        public List<Color> GetById(int colorId)
+        public IDataResult<List<Color>> GetById(int colorId)
         {
-            return _colorDal.GetAll(c => c.ColorId == colorId);
+            return new SuccessDataResult<List<Color>>( _colorDal.GetAll(c => c.ColorId == colorId));
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
             _colorDal.Update(color);
+            return new SuccessResult(Messages.ColorUpdated);
         }
     }
 }
