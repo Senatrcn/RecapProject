@@ -22,6 +22,20 @@ namespace RecapProject.Business.Constants
         public static string ColorUpdated = "Renk güncellendi";
         public static string ColorsListed = "Renkler listelendi";
 
+        public static string UserAdded = "Kullanıcı eklendi";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UsersListed = "Kullanıcılar listelendi";
+
+        public static string CustomerAdded = "Müşteri eklendi";
+        public static string CustomerDeleted = "Müşteri silindi";
+        public static string CustomerUpdated = "Müşteri güncellendi";
+        public static string CustomersListed = "Müşteriler listelendi";
+
+        public static string RentalAdded = "Kiralama işlemi eklendi";
+        public static string RentalDeleted = "Kiralama işlemi silindi";
+        public static string RentalUpdated = "Kiralama işlemi güncellendi";
+        public static string RentalsListed = "Kiralama işlemleri listelendi";
 
     }
 }
