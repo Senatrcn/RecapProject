@@ -1,5 +1,7 @@
 ﻿using RecapProject.Business.Abstract;
 using RecapProject.Business.Constants;
+using RecapProject.Business.ValidationRules.FluentValidation;
+using RecapProject.Core.Aspects.Autofac.Validation;
 using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities.Concrete;
@@ -16,6 +18,7 @@ namespace RecapProject.Business.Concrete
         {
             _colorDal = colorDal;
         }
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Add(Color color)
         {
             _colorDal.Add(color);
@@ -38,6 +41,7 @@ namespace RecapProject.Business.Concrete
             return new SuccessDataResult<List<Color>>( _colorDal.GetAll(c => c.ColorId == colorId));
         }
 
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
             _colorDal.Update(color);

@@ -1,5 +1,7 @@
 ﻿using RecapProject.Business.Abstract;
 using RecapProject.Business.Constants;
+using RecapProject.Business.ValidationRules.FluentValidation;
+using RecapProject.Core.Aspects.Autofac.Validation;
 using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities.Concrete;
@@ -16,6 +18,7 @@ namespace RecapProject.Business.Concrete
         {
             _rentalDal = rentalDal;
         }
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             _rentalDal.Add(rental);
@@ -38,6 +41,7 @@ namespace RecapProject.Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.Id == rentalId));
         }
 
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);

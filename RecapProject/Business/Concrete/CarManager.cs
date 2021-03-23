@@ -1,5 +1,7 @@
 ﻿using RecapProject.Business.Abstract;
 using RecapProject.Business.Constants;
+using RecapProject.Business.ValidationRules.FluentValidation;
+using RecapProject.Core.Aspects.Autofac.Validation;
 using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities;
@@ -19,6 +21,7 @@ namespace RecapProject.Business.Concrete
 
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             if(car.Description.Length >= 2 && car.DailyPrice > 0)
@@ -46,6 +49,22 @@ namespace RecapProject.Business.Concrete
 
         }
 
+        public IDataResult<List<Car>> GetByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId), Messages.CarsListed);
+        }
+
+        public IDataResult<List<Car>> GetByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.CarsListed);
+        }
+
+        public IResult GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
+
+        }
+
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
@@ -61,6 +80,7 @@ namespace RecapProject.Business.Concrete
             return new SuccessDataResult<List<Car>>( _carDal.GetAll(c => c.ColorId == colorId),Messages.CarsListed);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
              _carDal.Update(car);

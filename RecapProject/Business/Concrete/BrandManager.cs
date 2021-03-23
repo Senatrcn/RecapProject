@@ -1,5 +1,7 @@
 ﻿using RecapProject.Business.Abstract;
 using RecapProject.Business.Constants;
+using RecapProject.Business.ValidationRules.FluentValidation;
+using RecapProject.Core.Aspects.Autofac.Validation;
 using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities.Concrete;
@@ -16,6 +18,7 @@ namespace RecapProject.Business.Concrete
         {
             _brandDal = brandDal;
         }
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);
@@ -38,6 +41,7 @@ namespace RecapProject.Business.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(b => b.BrandId == brandId), Messages.BrandsListed);
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
