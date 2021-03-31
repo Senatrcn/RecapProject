@@ -37,5 +37,11 @@ namespace RecapProject.Business.Constants
         public static string RentalUpdated = "Kiralama işlemi güncellendi";
         public static string RentalsListed = "Kiralama işlemleri listelendi";
 
+        public static string ImageAdded = "Resim eklendi";
+        public static string ImageDeleted = "Resim silindi";
+        public static string ImageUpdated = "Resim güncellendi";
+        public static string ImagesListed = "Resimler listelendi";
+
+        public static string CarImageLimitExceeded = "5'ten fazla resmi yüklenemez";
     }
 }

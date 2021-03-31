@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecapProject\RecapProject.csproj" />
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RecapProject\RecapProject.csproj" />
+  </ItemGroup>
 
 </Project>
