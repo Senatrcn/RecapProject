@@ -1,4 +1,5 @@
 ﻿using RecapProject.Business.Abstract;
+using RecapProject.Business.BusinessAspects.Autofac;
 using RecapProject.Business.Constants;
 using RecapProject.Business.ValidationRules.FluentValidation;
 using RecapProject.Core.Aspects.Autofac.Validation;
@@ -20,7 +21,7 @@ namespace RecapProject.Business.Concrete
             _carDal = carDal;
 
         }
-
+        [SecuredOperation("Product.Add,Admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {

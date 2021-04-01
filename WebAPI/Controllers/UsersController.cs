@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RecapProject.Business.Abstract;
+using RecapProject.Core.Entities.Concrete;
 using RecapProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;

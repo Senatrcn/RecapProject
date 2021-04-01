@@ -2,6 +2,7 @@
 using RecapProject.Business.Constants;
 using RecapProject.Business.ValidationRules.FluentValidation;
 using RecapProject.Core.Aspects.Autofac.Validation;
+using RecapProject.Core.Entities.Concrete;
 using RecapProject.Core.Utilities.Results;
 using RecapProject.DataAccess.Abstract;
 using RecapProject.Entities.Concrete;
@@ -41,6 +42,16 @@ namespace RecapProject.Business.Concrete
         public IDataResult<User> GetById(int userId)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == userId));
+        }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(e => e.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
         }
 
         [ValidationAspect(typeof(UserValidator))]

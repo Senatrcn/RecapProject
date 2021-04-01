@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RecapProject.Core.Entities.Concrete;
 using RecapProject.Entities;
 using RecapProject.Entities.Concrete;
 using System;
@@ -22,6 +23,8 @@ namespace RecapProject.DataAccess.Concrete.EntityFramework.Context
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
     }
 }

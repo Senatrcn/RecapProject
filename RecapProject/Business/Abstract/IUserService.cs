@@ -1,4 +1,5 @@
-﻿using RecapProject.Core.Utilities.Results;
+﻿using RecapProject.Core.Entities.Concrete;
+using RecapProject.Core.Utilities.Results;
 using RecapProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,8 @@ namespace RecapProject.Business.Abstract
         IResult Update(User user);
         IDataResult<List<User>> GetAll();
         IDataResult<User> GetById(int userId);
+
+        List<OperationClaim> GetClaims(User user);
+        User GetByMail(string email);
     }
 }
